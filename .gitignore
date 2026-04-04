@@ -1,0 +1,63 @@
+# Generated .gitignore file for: Python, macOS, Linux, Windows, Pip, PostgreSQL, Redis, Neo4j, Docker, GitHub Actions
+# Created with FOSSA's DevOps Tools
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+venv/
+*venv/
+env/
+.env
+*.so
+
+# macOS
+# Add macOS-specific ignores here
+
+# Linux
+# Add Linux-specific ignores here
+
+# Windows
+# Add Windows-specific ignores here
+
+# Pip
+# Add Pip-specific ignores here
+
+# PostgreSQL
+# Add PostgreSQL-specific ignores here
+
+# Redis
+# Add Redis-specific ignores here
+
+# Neo4j
+# Add Neo4j-specific ignores here
+
+# Docker
+docker-compose.override.yml
+Dockerfile.override
+.dockerignore
+
+# GitHub Actions
+# Add GitHub Actions-specific ignores here
+
+# Common
+.DS_Store
+Thumbs.db
+*.log
+*.bak
+*.tmp
+*.swp
+*~
+
+# IDE and editor generated files
+.idea/
+*.sublime-*
+*.vscode/
+*.code-workspace
+
+# Local environment files
+.env
+.env.local
+.env.*.local
