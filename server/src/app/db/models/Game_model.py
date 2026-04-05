@@ -2,7 +2,7 @@ from sqlalchemy import Column, String, Float, DateTime
 from sqlalchemy.dialects.postgresql import ARRAY
 from sqlalchemy.orm import relationship
 from pgvector.sqlalchemy import Vector
-from app.db.db import Base
+from db import Base
 
 
 class Game(Base):
