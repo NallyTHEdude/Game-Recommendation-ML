@@ -1,3 +1,4 @@
+# TODO: IMPLIMENT LOGGER
 from loguru import logger
 import sys
 import json
