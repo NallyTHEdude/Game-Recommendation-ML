@@ -92,3 +92,4 @@ logs/
 *.tsbuildinfo
 *.sublime*
 *.sublime-*
+artifacts/
