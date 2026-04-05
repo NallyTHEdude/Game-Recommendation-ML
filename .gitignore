@@ -1,55 +1,16 @@
-# Generated .gitignore file for: Python, macOS, Linux, Windows, Pip, PostgreSQL, Redis, Neo4j, Docker, GitHub Actions
-# Created with FOSSA's DevOps Tools
-
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-.pytest_cache/
-.coverage
-venv/
-*venv/
-env/
-.env
-*.so
-
-# macOS
-# Add macOS-specific ignores here
-
-# Linux
-# Add Linux-specific ignores here
-
-# Windows
-# Add Windows-specific ignores here
-
-# Pip
-# Add Pip-specific ignores here
-
-# PostgreSQL
-# Add PostgreSQL-specific ignores here
-
-# Redis
-# Add Redis-specific ignores here
-
-# Neo4j
-# Add Neo4j-specific ignores here
-
 # Docker
-docker-compose.override.yml
-Dockerfile.override
 .dockerignore
-
-# GitHub Actions
-# Add GitHub Actions-specific ignores here
+Dockerfile.override
+docker-compose.override.yml
 
 # Common
+*.bak
+*.log
+*.swp
+*.tmp
+*~
 .DS_Store
 Thumbs.db
-*.log
-*.bak
-*.tmp
-*.swp
-*~
 
 # IDE and editor generated files
 .idea/
@@ -59,5 +20,75 @@ Thumbs.db
 
 # Local environment files
 .env
+.env.*
 .env.local
-.env.*.local
+
+# Node.js
+node_modules/
+.npm
+.pnpm-debug.log*
+.yarn-integrity
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# Build and coverage outputs
+build/
+coverage/
+.nyc_output
+.cache
+.parcel-cache
+.next
+out
+.nuxt
+dist/
+.vuepress/dist
+.temp
+.docusaurus
+.serverless/
+.fusebox/
+.webpack/
+.svelte-kit
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+.eggs/
+*.egg-info/
+*.egg
+MANIFEST
+pip-log.txt
+pip-delete-this-directory.txt
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.pytest_cache/
+.pybuilder/
+target/
+.ipynb_checkpoints
+
+# Virtual environments
+.venv
+env/
+venv/
+ENV/
+
+# Type checking and linting
+.mypy_cache/
+.dmypy.json
+.pyre/
+.pytype/
+.ruff_cache/
+
+# Miscellaneous
+logs/
+*.tgz
+*.tsbuildinfo
+*.sublime*
+*.sublime-*
