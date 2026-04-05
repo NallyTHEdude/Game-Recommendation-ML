@@ -1,7 +1,7 @@
 from sqlalchemy import Column, String, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 from pgvector.sqlalchemy import Vector
-from app.db import Base
+from app.db.db import Base
 
 
 
