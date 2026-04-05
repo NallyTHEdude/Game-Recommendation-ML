@@ -1,2 +1,1 @@
-from .db import Base, init_db
-print("-----DB Base imported successfully-----")
+from .db import Base, connect_db
