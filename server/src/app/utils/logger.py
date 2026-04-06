@@ -1,28 +1,51 @@
-from loguru import logger
 import sys
 import os
 from pathlib import Path
-import json
+from loguru import logger
 
-# Define log directory and file
-LOG_DIR = Path("logs")
+LOG_DIR = Path("./logs")
 LOG_DIR.mkdir(exist_ok=True)
-LOG_FILE = LOG_DIR / "app.log"
 
-# Remove default logger configuration
+valid_levels = {"TRACE", "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"}
+log_level = os.getenv("LOG_LEVEL", "INFO").upper()
+if log_level not in valid_levels:
+    raise ValueError(f"Invalid LOG_LEVEL: {log_level}")
+
 logger.remove()
 
-# Add console logging with dynamic level
-logger.add(sys.stderr, level=os.getenv("LOG_LEVEL", "DEBUG"), format="<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>")
-
-# Add file logging with rotation and retention policies
+# Console sink
 logger.add(
-    LOG_FILE,
-    rotation="10 MB",  # Rotate log file after 10 MB
-    retention="10 days",  # Keep logs for 10 days
-    compression="zip",  # Compress rotated logs
-    level="INFO",  # File logging level
-    format="{time:YYYY-MM-DD HH:mm:ss} | {level} | {name}:{function}:{line} - {message}"
+    sys.stderr,
+    level=log_level,
+    format="<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level}</level> | "
+           "<cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>",
+    colorize=True,
+    diagnose=False,   # Don't leak locals in prod
+    catch=True,
 )
 
-logger.bind(user_id="USR-1243", doc_id="DOC-2348").debug("Processing document")
+# File sink — structured JSON for log aggregators
+logger.add(
+    LOG_DIR / "app.log",
+    level="INFO",
+    rotation="10 MB",
+    retention="10 days",
+    compression="zip",
+    enqueue=True,      # Thread/async safe
+    serialize=True,    # JSON lines output
+    diagnose=False,
+    catch=True,
+)
+
+# Dedicated error sink
+logger.add(
+    LOG_DIR / "error.log",
+    level="ERROR",
+    rotation="5 MB",
+    retention="30 days",
+    compression="zip",
+    enqueue=True,
+    serialize=True,
+    diagnose=False,
+    catch=True,
+)
