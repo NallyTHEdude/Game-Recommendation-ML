@@ -18,6 +18,7 @@ Base = declarative_base()
 def init_db():
     from db.models import Game, User, UserGameInteraction
     Base.metadata.create_all(bind=engine)
+    print("Database tables created successfully.")
 
 def connect_db():
     try:
