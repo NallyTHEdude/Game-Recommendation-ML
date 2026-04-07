@@ -24,6 +24,6 @@ class Game(Base):
     description = Column(String)
     playtime = Column(Float)
 
-    embedding = Column(Vector(1536))  # match your embedding model
+    embedding = Column(Vector(768))  # matches model "BAAI/bge-base-en-v1.5" output dimension
 
     interactions = relationship("UserGameInteraction", back_populates="game")
