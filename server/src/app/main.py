@@ -1,6 +1,7 @@
 from _core import config
 from utils import logger
 from db import connect_db, init_db
+from ml import ml_models
 
 if __name__ == "__main__":
     # uncomment in production to initialize the database on startup
