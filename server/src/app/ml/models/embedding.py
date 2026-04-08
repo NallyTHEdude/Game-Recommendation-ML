@@ -21,7 +21,6 @@ class EmbeddingModel:
         self._initialized = True
 
     def encode_passage(self, tags: list[str], genre: list[str], summary: str) -> list[float]:
-        # Combine all input text into a single string
         tags_text = ", ".join(tags)
         genre_text = ", ".join(genre)
 
